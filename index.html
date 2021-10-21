@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from nyousefali.com.br/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 15 Oct 2021 12:10:25 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#070707"/>
+    <meta name="description" content="Curso online para entusiastas no front-end. Aprenda a criar interfaces web fora da caixa com conteúdo teórico e prático. Para dar asas a sua criatividade." />
+    <meta name="keywords" content="frontend, backend, animation, css, development web, desenvolvimento web, ux, ui, uxui" />
+    <meta name="author" content="Nasser Yousef Ali" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUGO</title>
+
+    <!-- META -->
+
+    <!-- CSS -->
+    <link rel="icon" type="image/png" href="img/favicon-ny.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com/">
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400&amp;family=Saira:wght@200;300;400;500&amp;display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- JS -->
+    <script src="js/svg-inject.min.js"></script>
+    <script>
+        var TxtRotate = function(el, toRotate, period) {
+  this.toRotate = toRotate;
+  this.el = el;
+  this.loopNum = 0;
+  this.period = parseInt(period, 10) || 2000;
+  this.txt = '';
+  this.tick();
+  this.isDeleting = false;
+};
+
+TxtRotate.prototype.tick = function() {
+  var i = this.loopNum % this.toRotate.length;
+  var fullTxt = this.toRotate[i];
+
+  if (this.isDeleting) {
+    this.txt = fullTxt.substring(0, this.txt.length - 1);
+  } else {
+    this.txt = fullTxt.substring(0, this.txt.length + 1);
+  }
+
+  this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+  var that = this;
+  var delta = 100 - Math.random() * 100;
+
+  if (this.isDeleting) { delta /= 2; }
+
+  if (!this.isDeleting && this.txt === fullTxt) {
+    delta = this.period;
+    this.isDeleting = true;
+  } else if (this.isDeleting && this.txt === '') {
+    this.isDeleting = false;
+    this.loopNum++;
+    delta = 500;
+  }
+
+  setTimeout(function() {
+    that.tick();
+  }, delta);
+};
+
+window.onload = function() {
+  var elements = document.getElementsByClassName('txt-rotate');
+  for (var i=0; i<elements.length; i++) {
+    var toRotate = elements[i].getAttribute('data-rotate');
+    var period = elements[i].getAttribute('data-period');
+    if (toRotate) {
+      new TxtRotate(elements[i], JSON.parse(toRotate), period);
+    }
+  }
+  // INJECT CSS
+  var css = document.createElement("style");
+  css.type = "text/css";
+  css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
+  document.body.appendChild(css);
+};
+    </script>
+</head>
+<body>
+
+    <!--=====================================================================-->
+    <!--=========== MENU ============-->
+    <!--=====================================================================-->
+    <header>
+        <div class="bg-header"></div>
+        <nav class="nav-menu">
+            <div class="nav-left">
+                <ul class="nav-list p-1">
+                    <li class="nav-item hidden"><a href="#section-00" class="nav-link mr-4" id="nav-home">Início</a></li>
+                    <li class="nav-item hidden"><a href="#section-02" class="nav-link" id="nav-about">Sobre</a></li>
+                </ul>
+            </div>
+            <div class="logo">
+                <a href="#"><img src="img/favicon-ny.png" alt="" onload="SVGInject(this)"></a>
+            </div>
+            <div class="nav-right">
+                <ul class="nav-list p-1">
+                    <li class="nav-item hidden"><a href="#section-05" class="nav-link ml-4" id="nav-contact">Contato</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+    <!--=====================================================================-->
+    <!--=========== HERO ============-->
+    <!--=====================================================================-->
+    <div class="relative">
+        <div class="bg-hero">
+            <img class="svg-bg-hero" src="svg/fig-waves.svg" alt="" onload="SVGInject(this)">
+        </div>
+
+        <section class="container-hero" id="section-00">
+            <div class="grid-7 my-7">
+                <div>
+                    <h5>@nugobr</h5>
+                </div>
+                <div>
+                    <span
+                    class="pl-2 h0 letters txt-rotate"
+                    data-rotate='[ "N U G O", "O G U N" ]'></span>
+                </div>
+                <div>
+                    <h4 class="color-blue mt-3" id="text-creative">Desenvolvimento de Software</h4>
+                </div>
+                <div>
+                    <h4 class="color-blue mt-2" id="text-uimotion">Inteligência Artificial</h4>
+                </div>
+            </div>
+            <div class="grid-5">
+                <div class="hidden pr-3">
+                    <h4 class="mt-1 pl-2">Nós desenvolvemos sistemas e automatizamos processos.</h4>
+                </div>
+                <div class="flex-start-row pl-2 hidden">
+                    <img src="svg/icon-location.svg" class="icon-social-networks mx-1" alt="" onload="SVGInject(this)">
+                    <h6>Salvador, Bahia</h6>
+                </div>
+                
+            </div>
+        </section>
+
+        <div class="social flex-start-row disappear">
+            <div>
+                <a href="https://www.instagram.com/nugobr/" target="_blank" class="icon-menu"><img src="svg/icon-instagram.svg" class="icon-social-networks mx-1" alt="" onload="SVGInject(this)"></a>
+            </div>
+            <div>
+                <a href="https://www.linkedin.com/company/nugobr/" target="_blank" class="icon-menu"><img src="svg/icon-linkedin.svg" class="icon-social-networks mx-1" alt="" onload="SVGInject(this)"></a>
+            </div>
+        </div>
+
+        <div class="get-in-touch disappear">
+            <div>
+                <a target="_blank" href="https://api.whatsapp.com/send?phone=5571993084157&text=Ol%C3%A1!%20Eu%20vim%20do%20site%20e%20queria%20bater%20um%20papo%20com%20voc%C3%AAs!" class="nav-link">Entrar em contato</a>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--=====================================================================-->
+    <!--=========== ABOUT ============-->
+    <!--=====================================================================-->
+    <section class="container" id="section-02">
+        <div class="grid-5 pr-3">
+            <div>
+                <h5>sobre nós</h5>
+            </div>
+            <div>
+                <h2 class="mt-1 pl-2">O que é a Nugo?</h2>
+            </div>
+            <div>
+                <p class="mt-3 pl-4 p-1">
+                    Você pode pensar que somos uma agência. Mas nós somos mais do que isso.
+                    <br/><br/>
+                    Se olharmos ao nosso redor, veremos que a tecnologia está presente em tudo, no nosso trabalho, em casa, na escola, na rua, no nosso cotidiano, enfim, o que começou de uma forma primitiva, hoje tomou proporções que são capazes de beneficiar toda uma sociedade. A Nugo faz parte dessa evolução!
+                </p>
+            </div>
+            <div>
+                <ul class="list mt-3 ml-5">
+                    <li class="item-list py-1">Entendemos que marcas precisam interagir com pessoas e não com consumidores.</li>
+                    <li class="item-list py-1">Diversificação e integração, mantendo a sinergia entre todas as áreas para realizar um bom trabalho.</li>
+                    <li class="item-list py-1">O mundo atual se baseia na internet. Inserimos o seu negócio, marca ou ideia no mundo digital!</li>
+                </ul>
+            </div>
+        </div>
+        <div class="grid-1"></div>
+    </section>
+
+    <div class="w-100 hidden bt-gray bb-gray py-3" id="section-03">
+        <h6 class="slider-text flex-start-row"> 
+            Chatbots
+            <img src="svg/icon-4star.svg" class="w-auto mx-5" style="min-width: 32px;" alt="" onload="SVGInject(this)">
+            Interface
+            <img src="svg/icon-4star.svg" class="w-auto mx-5" style="min-width: 32px;" alt="" onload="SVGInject(this)">
+            UX
+            <img src="svg/icon-4star.svg" class="w-auto mx-5" style="min-width: 32px;" alt="" onload="SVGInject(this)">
+            Design 
+            <img src="svg/icon-4star.svg" class="w-auto mx-5" style="min-width: 32px;" alt="" onload="SVGInject(this)">
+            Front-End
+            <img src="svg/icon-4star.svg" class="w-auto mx-5" style="min-width: 32px;" alt="" onload="SVGInject(this)">
+            Inteligência Artificial 
+            <img src="svg/icon-4star.svg" class="w-auto mx-5" style="min-width: 32px;" alt="" onload="SVGInject(this)">
+            Creative
+            <img src="svg/icon-4star.svg" class="w-auto mx-5" style="min-width: 32px;" alt="" onload="SVGInject(this)">
+            Digital
+            <img src="svg/icon-4star.svg" class="w-auto mx-5" style="min-width: 32px;" alt="" onload="SVGInject(this)">
+
+            Chatbots
+            <img src="svg/icon-4star.svg" class="w-auto mx-5" style="min-width: 32px;" alt="" onload="SVGInject(this)">
+            Interface
+            <img src="svg/icon-4star.svg" class="w-auto mx-5" style="min-width: 32px;" alt="" onload="SVGInject(this)">
+            UX
+            <img src="svg/icon-4star.svg" class="w-auto mx-5" style="min-width: 32px;" alt="" onload="SVGInject(this)">
+            Design 
+            <img src="svg/icon-4star.svg" class="w-auto mx-5" style="min-width: 32px;" alt="" onload="SVGInject(this)">
+            Front-End
+            <img src="svg/icon-4star.svg" class="w-auto mx-5" style="min-width: 32px;" alt="" onload="SVGInject(this)">
+            Inteligência Artificial 
+            <img src="svg/icon-4star.svg" class="w-auto mx-5" style="min-width: 32px;" alt="" onload="SVGInject(this)">
+            Creative
+            <img src="svg/icon-4star.svg" class="w-auto mx-5" style="min-width: 32px;" alt="" onload="SVGInject(this)">
+            Digital
+            <img src="svg/icon-4star.svg" class="w-auto mx-5" style="min-width: 32px;" alt="" onload="SVGInject(this)">
+
+            Chatbots
+            <img src="svg/icon-4star.svg" class="w-auto mx-5" style="min-width: 32px;" alt="" onload="SVGInject(this)">
+            Interface
+            <img src="svg/icon-4star.svg" class="w-auto mx-5" style="min-width: 32px;" alt="" onload="SVGInject(this)">
+            UX
+            <img src="svg/icon-4star.svg" class="w-auto mx-5" style="min-width: 32px;" alt="" onload="SVGInject(this)">
+            Design 
+            <img src="svg/icon-4star.svg" class="w-auto mx-5" style="min-width: 32px;" alt="" onload="SVGInject(this)">
+            Front-End
+            <img src="svg/icon-4star.svg" class="w-auto mx-5" style="min-width: 32px;" alt="" onload="SVGInject(this)">
+            Inteligência Artificial 
+            <img src="svg/icon-4star.svg" class="w-auto mx-5" style="min-width: 32px;" alt="" onload="SVGInject(this)">
+            Creative
+            <img src="svg/icon-4star.svg" class="w-auto mx-5" style="min-width: 32px;" alt="" onload="SVGInject(this)">
+            Digital
+            <img src="svg/icon-4star.svg" class="w-auto mx-5" style="min-width: 32px;" alt="" onload="SVGInject(this)">
+            
+        </h6>
+    </div>
+    
+
+    <!--=====================================================================-->
+    <!--=========== GET IN TOUCH ============-->
+    <!--=====================================================================-->
+    <section class="container hidden" id="section-04">
+        <div class="grid-12 my-8 relative">
+            <div>
+                <h5>Tire a sua ideia do papel!</h5>
+            </div>
+            <div>
+                <h2 class="mt-1 pl-3 ">Entre em contato</h2>
+            </div>
+            <div>
+                <a target="_blank" href="https://api.whatsapp.com/send?phone=5571993084157&text=Ol%C3%A1!%20Eu%20vim%20do%20site%20e%20queria%20bater%20um%20papo%20com%20voc%C3%AAs!"><h3 class="mt-6 text-center color-blue">Dê o próximo passo pra sua solução clicando aqui!</h3></a>
+            </div>
+            <img src="img/cursor.png" style="width: 38px; height: 38px;" class="cursor-ny" alt="" onload="SVGInject(this)">
+        </div>
+    </section>
+
+    <div class="bb-gray"></div>
+
+    <!--=====================================================================-->
+    <!--=========== LINKS ============-->
+    <!--=====================================================================-->
+    <section class="container" id="section-05">
+        <div class="row">
+            <div class="grid-3 flex-start-row">
+                <img src="svg/icon-instagram.svg" class="icon-social-networks mx-1" alt="" onload="SVGInject(this)">
+                <a href="https://www.instagram.com/nugobr/" class="link-external" target="_blank">Instagram</a>
+                <img src="svg/icon-link.svg" class="icon-social-networks px-1" alt="" onload="SVGInject(this)">
+            </div>
+            <div class="grid-3 flex-start-row">
+                <img src="svg/icon-linkedin.svg" class="icon-social-networks mx-1" alt="" onload="SVGInject(this)">
+                <a href="https://www.linkedin.com/company/nugobr/" class="link-external" target="_blank">Linkedin</a>
+                <img src="svg/icon-link.svg" class="icon-social-networks px-1" alt="" onload="SVGInject(this)">
+            </div>
+            <div class="grid-3 flex-start-row">
+                <img src="svg/icon-globe.svg" class="icon-social-networks mx-1" alt="" onload="SVGInject(this)">
+                <a href="https://www.instagram.com/devsbrazil/" class="link-external" target="_blank">Devs Brazil</a>
+                <img src="svg/icon-link.svg" class="icon-social-networks px-1" alt="" onload="SVGInject(this)">
+            </div>
+        </div>
+    </section>
+
+    <div class="bb-gray"></div>
+
+    <footer class="container py-6">
+        <div class="grid-12 p-0 flex-center">
+            <img src="img/favicon-ny.png" class="icon" alt="" onload="SVGInject(this)">
+        </div>
+        <div class="grid-12 p-0 pt-2 flex-center">
+            <p>NUGO © 2021</p> <br/>
+        </div>
+    </footer>
+    
+
+    <!--=========== JS ============-->
+    <script src="../cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js" integrity="sha512-cdV6j5t5o24hkSciVrb8Ki6FveC2SgwGfLE31+ZQRHAeSRxYhAQskLkq3dLm8ZcWe1N3vBOEYmmbhzf7NTtFFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="../cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js" integrity="sha512-Q+G390ZU2qKo+e4q+kVcJknwfGjKJOdyu5mVMcR95NqL6XaF4lY4nsSvIVB3NDP54ACsS9rqhE1DVqgpApl//Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/app.js"></script>
+
+    <script>
+
+        /*--=========== GSAP SCROLLTRIGGER ============- */
+        gsap.registerPlugin(ScrollTrigger);
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            /*--=========== TIMELINE LOADING E HERO ============- */
+            var tl1 = gsap.timeline();
+
+            tl1
+            .to('.screen-loading', {
+                duration: 1,
+                opacity: 0, 
+                y: -200,
+                delay: 2.5,
+                //filter: 'blur(10px)',
+                //y: "-10%",
+                ease: "power4.out",
+            })
+            .from(".bg-hero", {
+                duration: 2, 
+                opacity: 0, 
+                ease: "power4.out",
+            }, '-=1.5')
+            .from("#nav-home", {
+                duration: 1, 
+                opacity: 0, 
+                y: 200,
+                ease: "power4.out",
+            }, '-=0.9')
+            .from("#nav-about", {
+                duration: 1, 
+                opacity: 0, 
+                y: 200,
+                ease: "power4.out",
+            }, '-=0.9')
+            .from(".logo", {
+                duration: 1, 
+                opacity: 0,
+                y: 200,
+                ease: "power4.out",
+            }, '-=0.2')
+            .from("#nav-works", {
+                duration: 1, 
+                opacity: 0,
+                y: 200,
+                ease: "power4.out",
+            }, '-=0.9')
+            .from("#nav-contact", {
+                duration: 1, 
+                y: 200,
+                opacity: 0,
+                ease: "power4.out",
+            }, '-=0.9')
+            .from(".container-hero .grid-7 div", {
+                duration: 2,  
+                opacity: 0, 
+                y: 200,
+                stagger:{each: 0.1},
+                ease: "power4.out",
+            }, '-=1.5')
+            .from(".container-hero .grid-5 div", {
+                duration: 2, 
+                opacity: 0, 
+                y: 200,
+                stagger:{each: 0.1},
+                ease: "power4.out",
+            }, '-=1.5')
+            .from(".social div", {
+                duration: 2, 
+                opacity: 0, 
+                y: 200,
+                stagger:{each: 0.1},
+                ease: "power4.out",
+            }, '-=1.8')
+            .from(".get-in-touch div", {
+                duration: 2, 
+                opacity: 0, 
+                y: 200,
+                stagger:{each: 0.1},
+                ease: "power4.out",
+            }, '-=1.8')
+
+            
+            /////////////////////////////////
+            // TEXTOS
+            /////////////////////////////////
+            
+            gsap.from("#text-creative",{
+                x: 100,
+                duration: 1.5,
+                ease: "power4.out",
+                scrollTrigger:{
+                    trigger: '#text-creative',
+                    start: 'top 60%',
+                    end: 'end 15%',
+                    scrub: 3,
+                    //markers: true,
+                }
+            });
+
+            gsap.to("#text-uimotion",{
+                x: 150,
+                duration: 1.5,
+                ease: "power4.out",
+                scrollTrigger:{
+                    trigger: '#text-uimotion',
+                    start: 'top 60%',
+                    end: 'end 15%',
+                    scrub: 2,
+                    //markers: true,
+                }
+            });
+
+
+            /////////////////////////////////
+            // SECTIONS
+            /////////////////////////////////
+
+            gsap.from("#section-01 section, #section-01 div",{
+                opacity: 0,
+                y: 200,
+                duration: 1.5,
+                ease: "power4.out",
+                stagger:{each: 0.2}, 
+                scrollTrigger:{
+                    trigger: '#section-01',
+                    start: 'top 80%',
+                    end: 'end 00%',
+                }
+            });
+
+            gsap.from("#section-02 div div",{
+                opacity: 0,
+                y: 200,
+                duration: 1.5,
+                ease: "power4.out",
+                stagger:{each: 0.2}, 
+                scrollTrigger:{
+                    trigger: '#section-02',
+                    start: 'top 80%',
+                    end: 'end 00%',
+                }
+            });
+
+            gsap.from("#section-03",{
+                opacity: 0,
+                y: 200,
+                duration: 1.5,
+                ease: "power4.out",
+                stagger:{each: 0.2}, 
+                scrollTrigger:{
+                    trigger: '#section-03',
+                    start: 'top 80%',
+                    end: 'end 00%',
+                }
+            });
+
+
+            gsap.from("#section-04 div",{
+                opacity: 0,
+                y: 200,
+                duration: 1.5,
+                ease: "power4.out",
+                stagger:{each: 0.2}, 
+                scrollTrigger:{
+                    trigger: '#section-04',
+                    start: 'top 80%',
+                    end: 'end 00%',
+                }
+            });
+
+            gsap.from("#section-05 div div",{
+                opacity: 0,
+                y: 200,
+                duration: 1.5,
+                ease: "power4.out",
+                stagger:{each: 0.2}, 
+                scrollTrigger:{
+                    trigger: '#section-05',
+                    start: 'top 80%',
+                    end: 'end 00%',
+                }
+            });
+
+            
+
+        });
+
+        //ScrollTrigger.addEventListener("scrollStart", () => ScrollTrigger.refresh() );
+        
+
+
+    </script>
+
+
+</body>
+
+<!-- Mirrored from nyousefali.com.br/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 15 Oct 2021 12:10:32 GMT -->
+</html>
